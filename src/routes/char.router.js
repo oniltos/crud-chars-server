@@ -79,8 +79,6 @@ charRouter.put("/char/:id", isAuthenticatedMiddleware, async (req, res) => {
 charRouter.delete("/char/:id", isAuthenticatedMiddleware, async (req, res) => {
   try {
     const { id } = req.params;
-    console.log(id);
-
     const deletedChar = await CharModel.findOneAndDelete({ _id: id });
 
     if (!deletedChar)

@@ -71,7 +71,6 @@ userRouter.post("/login", async (req, res) => {
 
 userRouter.get("/profile", isAuthenticatedMiddleware, async (_req, res) => {
   const id = res.locals;
-  console.log(id);
   const user = await UserModel.findOne({ _id: id });
   res.status(200).json(user);
 });

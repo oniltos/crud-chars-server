@@ -6,7 +6,7 @@ import isAuthenticatedMiddleware from "../middlewares/isAuthenticatedMiddleware.
 dotenv.config();
 const charRouter = Router();
 
-charRouter.post("/new-char", isAuthenticatedMiddleware, async (req, res) => {
+charRouter.post("/characters", isAuthenticatedMiddleware, async (req, res) => {
   try {
     const id = res.locals;
     const { name } = req.body;
@@ -33,7 +33,7 @@ charRouter.post("/new-char", isAuthenticatedMiddleware, async (req, res) => {
   }
 });
 
-charRouter.get("/all-chars", isAuthenticatedMiddleware, async (_req, res) => {
+charRouter.get("/characters", isAuthenticatedMiddleware, async (_req, res) => {
   try {
     const id = res.locals;
 
@@ -46,7 +46,7 @@ charRouter.get("/all-chars", isAuthenticatedMiddleware, async (_req, res) => {
   }
 });
 
-charRouter.get("/char/:id", isAuthenticatedMiddleware, async (req, res) => {
+charRouter.get("/characters/:id", isAuthenticatedMiddleware, async (req, res) => {
   try {
     const char = await CharModel.findOne({ _id: req.params.id });
 
@@ -60,7 +60,7 @@ charRouter.get("/char/:id", isAuthenticatedMiddleware, async (req, res) => {
   }
 });
 
-charRouter.put("/char/:id", isAuthenticatedMiddleware, async (req, res) => {
+charRouter.put("/characters/:id", isAuthenticatedMiddleware, async (req, res) => {
   try {
     const char = req.body;
     const { id } = req.params;
@@ -76,7 +76,7 @@ charRouter.put("/char/:id", isAuthenticatedMiddleware, async (req, res) => {
   }
 });
 
-charRouter.delete("/char/:id", isAuthenticatedMiddleware, async (req, res) => {
+charRouter.delete("/characters/:id", isAuthenticatedMiddleware, async (req, res) => {
   try {
     const { id } = req.params;
     const deletedChar = await CharModel.findOneAndDelete({ _id: id });

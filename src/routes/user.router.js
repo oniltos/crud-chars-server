@@ -29,7 +29,7 @@ userRouter.post("/sign-up", async (req, res) => {
 
     return res
       .status(201)
-      .json({ message: "Usuário criado com sucesso", result });
+      .json({ message: "Usuário criado com sucesso",  name: result.name, email: result.email });
   } catch (err) {
     console.log(err);
     res.status(500).json({ message: err });
